@@ -1,0 +1,249 @@
+\documentclass{article}
+%-----------------------------------------------------------------
+% PREAMBLE -------------------------------------------------------
+%-----------------------------------------------------------------
+\usepackage[flushleft]{threeparttable}						
+%\usepackage[nolists,heads]{endfloat}
+\usepackage{pdflscape}
+\usepackage{amssymb}
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage[skip = 0pt]{caption}
+\captionsetup{justification=centering}
+\usepackage{subcaption}
+\usepackage{footnote}
+\usepackage{fullpage}
+\usepackage{mathrsfs,amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{changepage}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage[table]{xcolor}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{olivine}{rgb}{0.6, 0.73, 0.45}
+\usepackage{array}
+\usepackage[plainpages=false,pdfpagelabels]{hyperref}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{nameref}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{apacite}
+\usepackage{rotating}
+\usepackage[T1]{fontenc}
+\usepackage{lscape}
+\usepackage{adjustbox}
+\usepackage{afterpage}
+\usepackage{booktabs}
+\usepackage{lipsum}
+%-----------------------------------------------------------------
+%font
+%-----------------------------------------------------------------
+\usepackage[sc]{mathpazo}
+%-----------------------------------------------------------------
+%DAG
+%-----------------------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+%\tikzset{mynode/.style={draw,text width=1in,align=center}}
+\tikzset{mynode/.style={draw,align=center}}
+%-----------------------------------------------------------------
+\makeatletter\let\expandableinput\@@input\makeatother
+\MakeOuterQuote{"}
+\setcounter{MaxMatrixCols}{10}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}{Criterion}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{assumption}{Assumption}
+%-----------------------------------------------------------------
+% new environment for landscape tables    
+\newenvironment{ltable}{\begin{landscape}\begin{table}}{\end{table}\end{landscape}}
+\newenvironment{ltablelong}{\begin{landscape}\begin{longtable}}{\end{longtable}\end{landscape}}
+%-----------------------------------------------------------------
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+%-----------------------------------------------------------------
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+%-----------------------------------------------------------------
+\makeatletter
+\newcommand\primitiveinput[1]
+{\@@input #1 }
+\makeatother
+%-----------------------------------------------------------------
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+%-----------------------------------------------------------------
+% tables numbers setup
+%\numberwithin{table}{section}
+%-----------------------------------------------------------------
+% colors
+%-----------------------------------------------------------------
+\usepackage{colortbl}
+\usepackage{url}
+\urlstyle{rm}
+\definecolor{darkblue}{rgb}{0,0,.4}
+\hypersetup{colorlinks=true, 
+			breaklinks=true, 
+			citecolor=darkblue, 
+			linkcolor=darkblue, 
+			menucolor=darkblue, 
+			urlcolor=darkblue}
+%-----------------------------------------------------------------
+\begin{document}
+%-----------------------------------------------------------------
+\title{Stata Tables}
+\author{Rony Rodriguez-Ramirez\\{\normalsize The World Bank, Development Impact Evaluation Unit}}
+\maketitle
+\listoftables
+%-----------------------------------------------------------------
+\newpage
+%-----------------------------------------------------------------
+% FIRST TABLE
+%-----------------------------------------------------------------
+\begin{table}[H]
+	\centering
+	\label{tab:Table}
+	\begin{adjustbox}{max width=\linewidth}
+		\begin{threeparttable}
+			\caption{Basic exported table}
+			\begin{tabular}{@{}l*{4}{c}@{}}
+                \toprule
+                \toprule 
+				& (1) & (2) & (3) & (4) \\
+				\primitiveinput{tables/t1_basic.tex}
+				\bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\setlength\labelsep{0pt}
+				\footnotesize
+				\item \textit{Notes}: \lipsum[1].
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+%-----------------------------------------------------------------
+% SECOND TABLE
+%-----------------------------------------------------------------
+\begin{table}[H]
+	\centering
+	\label{tab:Table}
+	\begin{adjustbox}{max width=\linewidth}
+		\begin{threeparttable}
+			\caption{Adding variable labels}
+			\begin{tabular}{@{}l*{4}{c}@{}}
+                \toprule
+                \toprule 
+				& (1) & (2) & (3) & (4) \\
+				\primitiveinput{tables/t2_labels.tex}
+				\bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\setlength\labelsep{0pt}
+				\footnotesize
+				\item \textit{Notes}: \lipsum[1].
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+%-----------------------------------------------------------------
+% THIRD TABLE
+%-----------------------------------------------------------------
+\begin{table}[H]
+	\centering
+	\label{tab:Table}
+	\begin{adjustbox}{max width=\linewidth}
+		\begin{threeparttable}
+			\caption{Removing base category}
+			\begin{tabular}{@{}l*{4}{c}@{}}
+                \toprule
+                \toprule 
+				& (1) & (2) & (3) & (4) \\
+				\primitiveinput{tables/t3_labels_omitted.tex}
+				\bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\setlength\labelsep{0pt}
+				\footnotesize
+				\item \textit{Notes}: \lipsum[1]. 
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+%-----------------------------------------------------------------
+% Fourth Table
+%-----------------------------------------------------------------
+\begin{table}[H]
+	\centering
+	\label{tab:Table}
+	\begin{adjustbox}{max width=\linewidth}
+		\begin{threeparttable}
+			\caption{Adding fixed effects}
+			\begin{tabular}{@{}l*{4}{c}@{}}
+                \toprule
+                \toprule 
+				& (1) & (2) & (3) & (4) \\
+				\primitiveinput{tables/t4_scalars.tex}
+				\bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\setlength\labelsep{0pt}
+				\footnotesize
+				\item \textit{Notes}: \lipsum[1].
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+%-----------------------------------------------------------------
+% FIFTH TABLE
+%-----------------------------------------------------------------
+\begin{table}[H]
+	\centering
+	\label{tab:Table}
+	\begin{adjustbox}{max width=\linewidth}
+		\begin{threeparttable}
+			\caption{Complete table with model titles and notes}
+			\begin{tabular}{@{}l*{4}{c}@{}}
+                \toprule
+                \toprule 
+                &\multicolumn{4}{c}{Dependent variable:} \\
+                \cmidrule(lr){2-5} 
+                &\multicolumn{2}{c}{Number of Deaths} & \multicolumn{2}{c}{Number of Divorces}  \\ 
+                \cmidrule(r){2-3}
+                \cmidrule(l){4-5}  
+                & (1) & (2) & (3) & (4) \\
+                \primitiveinput{tables/t4_scalars.tex}
+                \bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\setlength\labelsep{0pt}
+				\footnotesize
+				\item \textit{Notes}: \lipsum[1].
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{adjustbox}
+\end{table}
+%-----------------------------------------------------------------
+
+\end{document}
+%-----------------------------------------------------------------
